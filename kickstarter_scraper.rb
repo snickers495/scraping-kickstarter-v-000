@@ -7,8 +7,12 @@ def create_project_hash
   projects = {}
   array.each do |post|
     title = post.css("h2.bbcard_name strong a").text
-    projects[title.to_sym] = {}
-    
+    projects[title.to_sym] = {
+      image_link: post.css("div.project-thumbnail a img").attribute("src").value
+      description: post.css("p.bbcard_blurb").value
+      location: post.css(".location-name").value 
+    }
+
 
 
 end
