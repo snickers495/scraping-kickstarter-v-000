@@ -8,10 +8,14 @@ def create_project_hash
   array.each do |post|
     title = post.css("h2.bbcard_name strong a").text
     projects[title.to_sym] = {
-      image_link: post.css("div.project-thumbnail a img").attribute("src").value
-      description: post.css("p.bbcard_blurb").text
-      location: post.css("ul.project-meta span.location-name").text
+      image_link: post.css("div.project-thumbnail a img").attribute("src").value,
+      description: post.css("p.bbcard_blurb").text,
+      location: post.css("ul.project-meta span.location-name").text,
+      percent_funded: post.css("ul.project-stats li.first.funded strong").text.gsub("%","").to_i
     }
+  end
+  projects
+end 
 
 
 
