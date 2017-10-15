@@ -9,8 +9,8 @@ def create_project_hash
     title = post.css("h2.bbcard_name strong a").text
     projects[title.to_sym] = {
       image_link: post.css("div.project-thumbnail a img").attribute("src").value
-      description: post.css("p.bbcard_blurb").value
-      location: post.css(".location-name").value 
+      description: post.css("p.bbcard_blurb").text
+      location: post.css("ul.project-meta span.location-name").text
     }
 
 
